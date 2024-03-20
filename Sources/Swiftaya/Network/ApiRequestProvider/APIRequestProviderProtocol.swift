@@ -11,6 +11,7 @@ public protocol APIRequestProviderProtocol {
 }
 public protocol APIRequestProtocol {
     associatedtype Response: Codable
+    var baseUrl: String { get }
     var path: String { get }
     var method: String { get }
     var body: Data? { get }

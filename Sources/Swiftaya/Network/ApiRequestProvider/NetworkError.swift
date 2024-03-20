@@ -6,7 +6,7 @@
 //
 
 import Foundation
-open enum NetworkError: Error {
+public enum NetworkError: Error {
     case noInternetConnection
     case invalidResponse
     case httpError(code: Int)
