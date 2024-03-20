@@ -9,11 +9,11 @@ import Foundation
 open class BaseRepository<Request: APIRequestProtocol>: BaseRepositoryProtocol {
     let provider: APIRequestProviderProtocol
     
-    init(provider: APIRequestProviderProtocol = APIRequestProvider()) {
+    public init(provider: APIRequestProviderProtocol = APIRequestProvider()) {
         self.provider = provider
     }
     
-    func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
+    public func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
         provider.request(request, completion: completion)
     }
 }

@@ -9,11 +9,11 @@ import Foundation
 open class APIRequestProvider: APIRequestProviderProtocol {
     let session: URLSession
     
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func request<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void) {
+    public func request<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void) {
         
         var urlRequest = URLRequest(url: URL(string: request.path)!)
         urlRequest.httpMethod = request.method
