@@ -6,14 +6,14 @@
 //
 
 import Foundation
-open class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
+class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
     let repository: BaseRepository<Request>
     
-    init(repository: BaseRepository<Request> = BaseRepository()) {
+    public init(repository: BaseRepository<Request> = BaseRepository()) {
         self.repository = repository
     }
     
-    func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
+    public func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
         repository.execute(request: request, completion: completion)
     }
 }
