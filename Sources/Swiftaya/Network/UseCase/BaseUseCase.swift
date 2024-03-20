@@ -6,10 +6,10 @@
 //
 
 import Foundation
-class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
+open class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
     let repository: BaseRepository<Request>
     
-    public init(repository: BaseRepository<Request> = BaseRepository()) {
+    init(repository: BaseRepository<Request> = BaseRepository()) {
         self.repository = repository
     }
     
