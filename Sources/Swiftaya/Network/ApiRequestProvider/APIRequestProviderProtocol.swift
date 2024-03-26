@@ -6,15 +6,16 @@
 //
 
 import Foundation
+
 public protocol APIRequestProviderProtocol {
-    func request<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void)
+    func request<T:APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void)
 }
-public protocol APIRequestProtocol {
+/*public protocol APIRequestProtocol {
     associatedtype Response: Codable
     var baseUrl: String { get }
     var path: String { get }
     var method: String { get }
     var body: Data? { get }
     var headers: [String: String]? { get }
-}
+}*/
 
