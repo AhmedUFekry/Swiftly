@@ -7,6 +7,7 @@
 
 import Foundation
 open class BaseAPIRequest<Response: Codable>: APIRequestProtocol {
+
     public let baseUrl: String
     public let path: String
     public let method: String

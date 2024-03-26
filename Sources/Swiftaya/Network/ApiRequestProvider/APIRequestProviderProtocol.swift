@@ -6,16 +6,10 @@
 //
 
 import Foundation
-
-public protocol APIRequestProviderProtocol {
+import Combine
+/*public protocol APIRequestProviderProtocol {
     func request<T:APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void)
-}
-/*public protocol APIRequestProtocol {
-    associatedtype Response: Codable
-    var baseUrl: String { get }
-    var path: String { get }
-    var method: String { get }
-    var body: Data? { get }
-    var headers: [String: String]? { get }
 }*/
-
+public protocol APIRequestProviderProtocol {
+    func request<T: APIRequestProtocol>(request: T) -> AnyPublisher<T.Response, Error>
+}

@@ -6,11 +6,25 @@
 //
 
 import Foundation
+import Combine
+//open class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
+//    //let repository: any BaseRepositoryProtocol
+//
+//    public func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
+//       // repository.execute(request: request, completion: completion)
+//
+//    }
+//}
+
 open class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
-    //let repository: any BaseRepositoryProtocol
+    private let repository: BaseRepository<Request>
     
-    public func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
-       // repository.execute(request: request, completion: completion)
-        
+    public init(repository: BaseRepository<Request> = BaseRepository()) {
+        self.repository = repository
+    }
+    
+    public func execute(request: Request) -> AnyPublisher<Request.Response, Error> {
+        return repository.execute(request: request)
     }
 }
+

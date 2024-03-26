@@ -6,15 +6,27 @@
 //
 
 import Foundation
+import Combine
+//open class BaseRepository<Request: APIRequestProtocol>: BaseRepositoryProtocol {
+//    let provider: APIRequestProviderProtocol
+//    
+//    public init(provider: APIRequestProviderProtocol = APIRequestProvider()) {
+//        self.provider = provider
+//    }
+//    
+//    public func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
+//        provider.request(request, completion: completion)
+//    }
+//}
 open class BaseRepository<Request: APIRequestProtocol>: BaseRepositoryProtocol {
-    let provider: APIRequestProviderProtocol
+    private let provider: APIRequestProviderProtocol
     
     public init(provider: APIRequestProviderProtocol = APIRequestProvider()) {
         self.provider = provider
     }
     
-    public func execute(request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
-        provider.request(request, completion: completion)
+    public func execute(request: Request) -> AnyPublisher<Request.Response, Error> {
+        return provider.request(request: request)
     }
 }
 
