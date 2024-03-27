@@ -19,8 +19,8 @@ import Combine
 open class BaseUseCase<Request: APIRequestProtocol>: BaseUseCaseProtocol {
     private let repository: BaseRepository<Request>
     
-    public init(repository: BaseRepository<Request> = BaseRepository()) {
-        self.repository = repository
+    public init(repository: any BaseRepositoryProtocol) {
+        self.repository = repository as! BaseRepository<Request>
     }
     
     public func execute(request: Request) -> AnyPublisher<Request.Response, Error> {
